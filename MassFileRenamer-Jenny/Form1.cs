@@ -92,6 +92,7 @@ namespace MassFileRenamer_Jenny
 
 			lstFileNames.Items.Clear();
 
+			// Not working correctly
 			foreach (var fileName in fileList)
 			{
 				if (lstExtensions.CheckedItems.Contains(Path.GetExtension(fileName)) &&
