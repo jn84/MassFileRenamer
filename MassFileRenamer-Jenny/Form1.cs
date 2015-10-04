@@ -166,19 +166,7 @@ namespace MassFileRenamer_Jenny
 		/// <returns>A file name string</returns>
 		private string GenerateFileName(int number)
 		{
-			var temp = "";
-			// Add the text contained in the txtOutputName TextBox
-			temp += txtOutputName.Text;
-
-			// If the value in the numLeadingZeros NumericUpDown control is zero, 
-			// don't zero pad the output
-			if (numLeadingZeros.Value == 0)
-				temp += number.ToString();
-
-			// Value is not zero, so pad the output with value zeros
-			else
-				temp += number.ToString("D" + numLeadingZeros.Value);
-			return temp;
+			return txtOutputName.Text + number.ToString("D" + numLeadingZeros.Value);
 		}
 
 		/// <summary>
