@@ -18,7 +18,8 @@ namespace MassFileRenamer_Jenny
 		private List<string> fileList;
 		private List<string> extensionList;
 
-		private string oldText = "";
+		// Holds the last version of the text in the txtOutputName TextBox
+		private string previousTxtOutputNameValue = "";
 
 		private bool folderLoaded = false;
 
@@ -41,15 +42,16 @@ namespace MassFileRenamer_Jenny
 			if (targetFolder.SelectedPath.Equals(""))
 				return;
 
-			folderLoaded = true;
-			chkEnableFilter.Enabled = true;
-			btnRunRename.Enabled = !txtOutputName.Text.Equals("");
+			chkEnableFilter.Enabled = 
+				btnRunRename.Enabled = 
+				folderLoaded = true;
 
+			btnRunRename.Enabled = !txtOutputName.Text.Equals("");
 
 			txtSelectedDirectory.Text = targetFolder.SelectedPath;
 
 			fileList = Directory.GetFiles(targetFolder.SelectedPath)
-												.Select(path => Path.GetFileName(path))
+												.Select(Path.GetFileName)
 												.ToList();
 
 			PopulateExtensionList();
@@ -59,14 +61,18 @@ namespace MassFileRenamer_Jenny
 		// Context menu code to open file from file list
 		private void viewFileToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start(targetFolder.SelectedPath + "\\" + lstFileNames.SelectedItem.ToString());
+			System.Diagnostics.Process.Start(targetFolder.SelectedPath + "\\" + lstFileNames.SelectedItem);
 		}
 
+		/// <summary>
+		///	Shows the context menu for the selected file
+		/// </summary>
 		private void lstFileNames_MouseDown(object sender, MouseEventArgs e)
 		{
+			// Set the selected value in the list to the value that was right clicked
 			lstFileNames.SelectedIndex = lstFileNames.IndexFromPoint(e.X, e.Y);
 
-			if (e.Button == System.Windows.Forms.MouseButtons.Right)
+			if (e.Button == MouseButtons.Right)
 			{
 				contextMenuStrip1.Show(lstFileNames, e.X, e.Y);
 			}
@@ -74,30 +80,21 @@ namespace MassFileRenamer_Jenny
 
 		private void lstExtensions_ItemCheck(object sender, ItemCheckEventArgs e)
 		{
-			//var targetExt = lstExtensions.Items[e.Index].ToString();
-
-			//if (e.NewValue.Equals(CheckState.Unchecked))
-			//	extensionList.Remove(targetExt);
-			//if (e.NewValue.Equals(CheckState.Checked))
-			//	extensionList.Add(targetExt);
-
-			// Reparse the file list since a lstExtensions item checked state changed
-			PopulateFileList();
+			// Calls PopulateFileList after the item check action is complete
+			// since PopulateFileList relies on the checked state of its collection
+			BeginInvoke((MethodInvoker) PopulateFileList);
 		}
 
 		private void PopulateFileList()
 		{
-			var tempList = new List<string>(fileList);
-			var isToBeKept = new bool[tempList.Count];
-
 			lstFileNames.Items.Clear();
 
-			// Not working correctly
+			// Add every element of fileList to lstFileNames that matches the filter settings
 			foreach (var fileName in fileList)
 			{
 				if (lstExtensions.CheckedItems.Contains(Path.GetExtension(fileName)) &&
-				    fileName.Contains(txtFilterInput.Text))
-						lstFileNames.Items.Add(fileName);
+					fileName.ToLower().Contains(txtFilterInput.Text.ToLower()))
+					lstFileNames.Items.Add(fileName, CheckState.Checked);
 			}
 		}
 
@@ -141,38 +138,52 @@ namespace MassFileRenamer_Jenny
 			PopulateFileList();
 		}
 
+		// If the character key pressed is an invalid file name character, ignore it
+		private void txtOutputName_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (Path.GetInvalidFileNameChars().Contains(e.KeyChar))
+				e.Handled = true;
+		}
+
+		/// <summary>
+		/// Sets the output file name preview text
+		/// </summary>
 		private void txtOutputName_TextChanged(object sender, EventArgs e)
 		{
-			if (txtOutputName.Text.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
-			{
-				txtOutputName.Text = oldText;
-				txtOutputName.Select(txtOutputName.TextLength, 0);
-				return;
-			}
-			if (!txtOutputName.Text.Equals("") && folderLoaded)
-				btnRunRename.Enabled = true;
-			else
-				btnRunRename.Enabled = false;
-			txtOutputExample.Text = CreateFileName(0);
-			oldText = txtOutputName.Text;
+			txtOutputExample.Text = GenerateFileName(0);
+			previousTxtOutputNameValue = txtOutputName.Text;
 		}
 
 		private void numLeadingZeros_ValueChanged(object sender, EventArgs e)
 		{
-			txtOutputExample.Text = CreateFileName(0);
+			txtOutputExample.Text = GenerateFileName(0);
 		}
 
-		private string CreateFileName(int number)
+		/// <summary>
+		/// Generates a file name string based on the rename options set in the form controls
+		/// </summary>
+		/// <param name="number">The number to be used for file name</param>
+		/// <returns>A file name string</returns>
+		private string GenerateFileName(int number)
 		{
 			var temp = "";
+			// Add the text contained in the txtOutputName TextBox
 			temp += txtOutputName.Text;
+
+			// If the value in the numLeadingZeros NumericUpDown control is zero, 
+			// don't zero pad the output
 			if (numLeadingZeros.Value == 0)
 				temp += number.ToString();
+
+			// Value is not zero, so pad the output with value zeros
 			else
 				temp += number.ToString("D" + numLeadingZeros.Value);
 			return temp;
 		}
 
+		/// <summary>
+		/// Reset the form to its initial state
+		/// </summary>
 		private void ResetForm()
 		{
 			fileList = new List<string>();
@@ -188,7 +199,7 @@ namespace MassFileRenamer_Jenny
 			txtOutputExample.Clear();
 			txtSelectedDirectory.Clear();
 			txtOuputInfo.Clear();
-			txtOuputInfo.Text += @"Waiting to run...\r\n";
+			txtOuputInfo.Text += "Waiting to run...\r\n";
 		}
 
 		private void btnReset_Click(object sender, EventArgs e)
@@ -198,33 +209,29 @@ namespace MassFileRenamer_Jenny
 
 		private void btnRunRename_Click(object sender, EventArgs e)
 		{
-			List<string> filesToRename = new List<string>();
-
 			txtOuputInfo.Text += "Operation Started\r\n";
 
-			filesToRename = lstFileNames.CheckedItems.OfType<string>().ToList();
+			var filesToRename = lstFileNames.CheckedItems.OfType<string>().ToList();
+			var i = 1;
 
-			for (var i = 0; i < filesToRename.Count; i++)
+			foreach (var file in filesToRename)
 			{
-				string extension = Path.GetExtension(filesToRename[i]),
-					   path = targetFolder.SelectedPath + "\\",
-					   fullOldFilePath = path + filesToRename[i],
-					   newFileName = CreateFileName(i);
+				string extension = Path.GetExtension(file),
+					   path = targetFolder.SelectedPath + @"\",
+					   fullOldFilePath = path + file,
+					   newFileName = GenerateFileName(i++);
 
 
 				if (File.Exists(path + newFileName + extension))
 				{
-					txtOuputInfo.Text += "File \"" + 
-										 newFileName + extension + 
-										 "\" already exists. Renaming old file to \"" + 
-										 newFileName + extension + "-OLD\".\r\n";
+					txtOuputInfo.Text += 
+						"File \"" + newFileName + extension + "\" already exists." +
+						" Renaming old file to \"" + newFileName + extension + "-OLD\".\r\n";
 					File.Move(path + newFileName + extension, path + newFileName + "-OLD" + extension);
 				}
-				txtOuputInfo.Text += "Renamed: \"" +
-									 filesToRename[i] +
-									 "\"  TO  \"" +
-									 newFileName + extension +
-									 "\"\r\n";
+				txtOuputInfo.Text += 
+					"Renamed: \"" + file + "\"  TO  \"" 
+					+ newFileName + extension + "\"\r\n";
 				File.Move(fullOldFilePath, path + newFileName + extension);
 			}
 			txtOuputInfo.Text += "Operation Completed.\r\n";

@@ -269,6 +269,7 @@
 			this.txtOutputName.Size = new System.Drawing.Size(138, 20);
 			this.txtOutputName.TabIndex = 2;
 			this.txtOutputName.TextChanged += new System.EventHandler(this.txtOutputName_TextChanged);
+			this.txtOutputName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOutputName_KeyPress);
 			// 
 			// btnReset
 			// 
