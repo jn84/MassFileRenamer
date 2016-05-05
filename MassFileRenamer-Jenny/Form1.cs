@@ -141,6 +141,12 @@ namespace MassFileRenamer_Jenny
 		// If the character key pressed is an invalid file name character, ignore it
 		private void txtOutputName_KeyPress(object sender, KeyPressEventArgs e)
 		{
+			if (e.KeyChar == (char)8)
+			{
+				e.Handled = false;
+				return;
+			}
+
 			if (Path.GetInvalidFileNameChars().Contains(e.KeyChar))
 				e.Handled = true;
 		}
@@ -152,6 +158,7 @@ namespace MassFileRenamer_Jenny
 		{
 			txtOutputExample.Text = GenerateFileName(0);
 			previousTxtOutputNameValue = txtOutputName.Text;
+			btnRunRename.Enabled = !txtOutputName.Text.Equals("") && folderLoaded;
 		}
 
 		private void numLeadingZeros_ValueChanged(object sender, EventArgs e)

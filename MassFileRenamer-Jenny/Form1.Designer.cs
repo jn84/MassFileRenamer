@@ -63,9 +63,10 @@
 			// 
 			// btnSelectFolder
 			// 
-			this.btnSelectFolder.Location = new System.Drawing.Point(291, 13);
+			this.btnSelectFolder.Location = new System.Drawing.Point(436, 20);
+			this.btnSelectFolder.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.btnSelectFolder.Name = "btnSelectFolder";
-			this.btnSelectFolder.Size = new System.Drawing.Size(323, 23);
+			this.btnSelectFolder.Size = new System.Drawing.Size(484, 35);
 			this.btnSelectFolder.TabIndex = 0;
 			this.btnSelectFolder.Text = "Select Folder";
 			this.btnSelectFolder.UseVisualStyleBackColor = true;
@@ -76,9 +77,10 @@
 			this.lstFileNames.CheckOnClick = true;
 			this.lstFileNames.FormattingEnabled = true;
 			this.lstFileNames.HorizontalScrollbar = true;
-			this.lstFileNames.Location = new System.Drawing.Point(291, 43);
+			this.lstFileNames.Location = new System.Drawing.Point(436, 66);
+			this.lstFileNames.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.lstFileNames.Name = "lstFileNames";
-			this.lstFileNames.Size = new System.Drawing.Size(323, 139);
+			this.lstFileNames.Size = new System.Drawing.Size(482, 193);
 			this.lstFileNames.Sorted = true;
 			this.lstFileNames.TabIndex = 1;
 			this.lstFileNames.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lstFileNames_MouseDown);
@@ -86,9 +88,11 @@
 			// grpSelectedDirectory
 			// 
 			this.grpSelectedDirectory.Controls.Add(this.txtSelectedDirectory);
-			this.grpSelectedDirectory.Location = new System.Drawing.Point(13, 188);
+			this.grpSelectedDirectory.Location = new System.Drawing.Point(20, 289);
+			this.grpSelectedDirectory.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.grpSelectedDirectory.Name = "grpSelectedDirectory";
-			this.grpSelectedDirectory.Size = new System.Drawing.Size(905, 47);
+			this.grpSelectedDirectory.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.grpSelectedDirectory.Size = new System.Drawing.Size(1358, 72);
 			this.grpSelectedDirectory.TabIndex = 2;
 			this.grpSelectedDirectory.TabStop = false;
 			this.grpSelectedDirectory.Text = "Selected Directory";
@@ -96,9 +100,10 @@
 			// txtSelectedDirectory
 			// 
 			this.txtSelectedDirectory.Enabled = false;
-			this.txtSelectedDirectory.Location = new System.Drawing.Point(7, 19);
+			this.txtSelectedDirectory.Location = new System.Drawing.Point(10, 29);
+			this.txtSelectedDirectory.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.txtSelectedDirectory.Name = "txtSelectedDirectory";
-			this.txtSelectedDirectory.Size = new System.Drawing.Size(892, 20);
+			this.txtSelectedDirectory.Size = new System.Drawing.Size(1336, 26);
 			this.txtSelectedDirectory.TabIndex = 0;
 			this.txtSelectedDirectory.TabStop = false;
 			// 
@@ -106,9 +111,11 @@
 			// 
 			this.grpFilter.Controls.Add(this.grpMatchFilter);
 			this.grpFilter.Controls.Add(this.grpExtensions);
-			this.grpFilter.Location = new System.Drawing.Point(620, 13);
+			this.grpFilter.Location = new System.Drawing.Point(930, 20);
+			this.grpFilter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.grpFilter.Name = "grpFilter";
-			this.grpFilter.Size = new System.Drawing.Size(298, 169);
+			this.grpFilter.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.grpFilter.Size = new System.Drawing.Size(447, 260);
 			this.grpFilter.TabIndex = 3;
 			this.grpFilter.TabStop = false;
 			this.grpFilter.Text = "Filter Options";
@@ -118,9 +125,11 @@
 			this.grpMatchFilter.Controls.Add(this.label1);
 			this.grpMatchFilter.Controls.Add(this.txtFilterInput);
 			this.grpMatchFilter.Controls.Add(this.chkEnableFilter);
-			this.grpMatchFilter.Location = new System.Drawing.Point(131, 20);
+			this.grpMatchFilter.Location = new System.Drawing.Point(196, 31);
+			this.grpMatchFilter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.grpMatchFilter.Name = "grpMatchFilter";
-			this.grpMatchFilter.Size = new System.Drawing.Size(160, 89);
+			this.grpMatchFilter.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.grpMatchFilter.Size = new System.Drawing.Size(240, 137);
 			this.grpMatchFilter.TabIndex = 2;
 			this.grpMatchFilter.TabStop = false;
 			this.grpMatchFilter.Text = "Match Filter";
@@ -128,18 +137,20 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(42, 66);
+			this.label1.Location = new System.Drawing.Point(63, 102);
+			this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(77, 13);
+			this.label1.Size = new System.Drawing.Size(112, 20);
 			this.label1.TabIndex = 2;
 			this.label1.Text = "(No Wildcards)";
 			// 
 			// txtFilterInput
 			// 
 			this.txtFilterInput.Enabled = false;
-			this.txtFilterInput.Location = new System.Drawing.Point(7, 43);
+			this.txtFilterInput.Location = new System.Drawing.Point(10, 66);
+			this.txtFilterInput.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.txtFilterInput.Name = "txtFilterInput";
-			this.txtFilterInput.Size = new System.Drawing.Size(147, 20);
+			this.txtFilterInput.Size = new System.Drawing.Size(218, 26);
 			this.txtFilterInput.TabIndex = 1;
 			this.txtFilterInput.TextChanged += new System.EventHandler(this.txtFilterInput_TextChanged);
 			// 
@@ -147,9 +158,10 @@
 			// 
 			this.chkEnableFilter.AutoSize = true;
 			this.chkEnableFilter.Enabled = false;
-			this.chkEnableFilter.Location = new System.Drawing.Point(7, 20);
+			this.chkEnableFilter.Location = new System.Drawing.Point(10, 31);
+			this.chkEnableFilter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.chkEnableFilter.Name = "chkEnableFilter";
-			this.chkEnableFilter.Size = new System.Drawing.Size(117, 17);
+			this.chkEnableFilter.Size = new System.Drawing.Size(172, 24);
 			this.chkEnableFilter.TabIndex = 0;
 			this.chkEnableFilter.Text = "Enable Match Filter";
 			this.chkEnableFilter.UseVisualStyleBackColor = true;
@@ -158,9 +170,11 @@
 			// grpExtensions
 			// 
 			this.grpExtensions.Controls.Add(this.lstExtensions);
-			this.grpExtensions.Location = new System.Drawing.Point(7, 20);
+			this.grpExtensions.Location = new System.Drawing.Point(10, 31);
+			this.grpExtensions.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.grpExtensions.Name = "grpExtensions";
-			this.grpExtensions.Size = new System.Drawing.Size(117, 143);
+			this.grpExtensions.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.grpExtensions.Size = new System.Drawing.Size(176, 220);
 			this.grpExtensions.TabIndex = 1;
 			this.grpExtensions.TabStop = false;
 			this.grpExtensions.Text = "Included Extensions";
@@ -169,37 +183,40 @@
 			// 
 			this.lstExtensions.CheckOnClick = true;
 			this.lstExtensions.FormattingEnabled = true;
-			this.lstExtensions.Location = new System.Drawing.Point(6, 19);
+			this.lstExtensions.Location = new System.Drawing.Point(9, 29);
+			this.lstExtensions.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.lstExtensions.Name = "lstExtensions";
-			this.lstExtensions.Size = new System.Drawing.Size(105, 109);
+			this.lstExtensions.Size = new System.Drawing.Size(156, 151);
 			this.lstExtensions.Sorted = true;
 			this.lstExtensions.TabIndex = 0;
 			this.lstExtensions.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.lstExtensions_ItemCheck);
 			// 
 			// contextMenuStrip1
 			// 
+			this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
 			this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.viewFileToolStripMenuItem});
 			this.contextMenuStrip1.Name = "contextMenuStrip1";
-			this.contextMenuStrip1.Size = new System.Drawing.Size(121, 26);
+			this.contextMenuStrip1.Size = new System.Drawing.Size(153, 34);
 			// 
 			// viewFileToolStripMenuItem
 			// 
 			this.viewFileToolStripMenuItem.Name = "viewFileToolStripMenuItem";
-			this.viewFileToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+			this.viewFileToolStripMenuItem.Size = new System.Drawing.Size(152, 30);
 			this.viewFileToolStripMenuItem.Text = "View File";
 			this.viewFileToolStripMenuItem.Click += new System.EventHandler(this.viewFileToolStripMenuItem_Click);
 			// 
 			// txtOuputInfo
 			// 
 			this.txtOuputInfo.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtOuputInfo.Location = new System.Drawing.Point(13, 241);
+			this.txtOuputInfo.Location = new System.Drawing.Point(20, 371);
+			this.txtOuputInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.txtOuputInfo.MaxLength = 10000000;
 			this.txtOuputInfo.Multiline = true;
 			this.txtOuputInfo.Name = "txtOuputInfo";
 			this.txtOuputInfo.ReadOnly = true;
 			this.txtOuputInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.txtOuputInfo.Size = new System.Drawing.Size(905, 220);
+			this.txtOuputInfo.Size = new System.Drawing.Size(1356, 336);
 			this.txtOuputInfo.TabIndex = 6;
 			// 
 			// groupBox1
@@ -212,70 +229,79 @@
 			this.groupBox1.Controls.Add(this.txtOutputName);
 			this.groupBox1.Controls.Add(this.btnReset);
 			this.groupBox1.Controls.Add(this.btnRunRename);
-			this.groupBox1.Location = new System.Drawing.Point(13, 13);
+			this.groupBox1.Location = new System.Drawing.Point(20, 20);
+			this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(272, 169);
+			this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.groupBox1.Size = new System.Drawing.Size(408, 260);
 			this.groupBox1.TabIndex = 7;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Rename";
 			// 
 			// numLeadingZeros
 			// 
-			this.numLeadingZeros.Location = new System.Drawing.Point(114, 50);
+			this.numLeadingZeros.Location = new System.Drawing.Point(171, 77);
+			this.numLeadingZeros.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.numLeadingZeros.Name = "numLeadingZeros";
-			this.numLeadingZeros.Size = new System.Drawing.Size(138, 20);
+			this.numLeadingZeros.Size = new System.Drawing.Size(207, 26);
 			this.numLeadingZeros.TabIndex = 10;
 			this.numLeadingZeros.ValueChanged += new System.EventHandler(this.numLeadingZeros_ValueChanged);
 			// 
 			// lblSampleOutput
 			// 
 			this.lblSampleOutput.AutoSize = true;
-			this.lblSampleOutput.Location = new System.Drawing.Point(6, 97);
+			this.lblSampleOutput.Location = new System.Drawing.Point(9, 149);
+			this.lblSampleOutput.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblSampleOutput.Name = "lblSampleOutput";
-			this.lblSampleOutput.Size = new System.Drawing.Size(122, 13);
+			this.lblSampleOutput.Size = new System.Drawing.Size(185, 20);
 			this.lblSampleOutput.TabIndex = 9;
 			this.lblSampleOutput.Text = "Sample Output Filename";
 			// 
 			// txtOutputExample
 			// 
 			this.txtOutputExample.Enabled = false;
-			this.txtOutputExample.Location = new System.Drawing.Point(7, 113);
+			this.txtOutputExample.Location = new System.Drawing.Point(10, 174);
+			this.txtOutputExample.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.txtOutputExample.Name = "txtOutputExample";
-			this.txtOutputExample.Size = new System.Drawing.Size(259, 20);
+			this.txtOutputExample.Size = new System.Drawing.Size(386, 26);
 			this.txtOutputExample.TabIndex = 8;
 			// 
 			// lblOutputNumbering
 			// 
 			this.lblOutputNumbering.AutoSize = true;
-			this.lblOutputNumbering.Location = new System.Drawing.Point(15, 52);
+			this.lblOutputNumbering.Location = new System.Drawing.Point(22, 80);
+			this.lblOutputNumbering.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblOutputNumbering.Name = "lblOutputNumbering";
-			this.lblOutputNumbering.Size = new System.Drawing.Size(89, 13);
+			this.lblOutputNumbering.Size = new System.Drawing.Size(133, 20);
 			this.lblOutputNumbering.TabIndex = 7;
 			this.lblOutputNumbering.Text = "Number Positions";
 			// 
 			// lblOutputName
 			// 
 			this.lblOutputName.AutoSize = true;
-			this.lblOutputName.Location = new System.Drawing.Point(46, 27);
+			this.lblOutputName.Location = new System.Drawing.Point(69, 42);
+			this.lblOutputName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblOutputName.Name = "lblOutputName";
-			this.lblOutputName.Size = new System.Drawing.Size(62, 13);
+			this.lblOutputName.Size = new System.Drawing.Size(92, 20);
 			this.lblOutputName.TabIndex = 3;
 			this.lblOutputName.Text = "Base Name";
 			// 
 			// txtOutputName
 			// 
-			this.txtOutputName.Location = new System.Drawing.Point(114, 24);
+			this.txtOutputName.Location = new System.Drawing.Point(171, 37);
+			this.txtOutputName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.txtOutputName.Name = "txtOutputName";
-			this.txtOutputName.Size = new System.Drawing.Size(138, 20);
+			this.txtOutputName.Size = new System.Drawing.Size(205, 26);
 			this.txtOutputName.TabIndex = 2;
 			this.txtOutputName.TextChanged += new System.EventHandler(this.txtOutputName_TextChanged);
 			this.txtOutputName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOutputName_KeyPress);
 			// 
 			// btnReset
 			// 
-			this.btnReset.Location = new System.Drawing.Point(149, 140);
+			this.btnReset.Location = new System.Drawing.Point(224, 215);
+			this.btnReset.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.btnReset.Name = "btnReset";
-			this.btnReset.Size = new System.Drawing.Size(117, 23);
+			this.btnReset.Size = new System.Drawing.Size(176, 35);
 			this.btnReset.TabIndex = 1;
 			this.btnReset.Text = "Reset Program";
 			this.btnReset.UseVisualStyleBackColor = true;
@@ -284,9 +310,10 @@
 			// btnRunRename
 			// 
 			this.btnRunRename.Enabled = false;
-			this.btnRunRename.Location = new System.Drawing.Point(7, 140);
+			this.btnRunRename.Location = new System.Drawing.Point(10, 215);
+			this.btnRunRename.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.btnRunRename.Name = "btnRunRename";
-			this.btnRunRename.Size = new System.Drawing.Size(136, 23);
+			this.btnRunRename.Size = new System.Drawing.Size(204, 35);
 			this.btnRunRename.TabIndex = 0;
 			this.btnRunRename.Text = "Rename Selected Files";
 			this.btnRunRename.UseVisualStyleBackColor = true;
@@ -294,9 +321,9 @@
 			// 
 			// Form_massFileRenamer
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(931, 473);
+			this.ClientSize = new System.Drawing.Size(1396, 728);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.txtOuputInfo);
 			this.Controls.Add(this.grpFilter);
@@ -304,6 +331,7 @@
 			this.Controls.Add(this.lstFileNames);
 			this.Controls.Add(this.btnSelectFolder);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.Name = "Form_massFileRenamer";
 			this.Text = "Mass File Renamer";
 			this.grpSelectedDirectory.ResumeLayout(false);
